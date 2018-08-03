@@ -1,0 +1,25 @@
+<nav>
+	<div class="brand-drop">
+		<span class="brand">
+			Fire/Ice
+		</span>
+		<i class="fas fa-bars"></i>
+	</div>
+	<ul [class.showDropDown]="showDropDown" [class.hideDropDown]="!showDropDown">
+		<li class="link">
+			Books
+		</li>
+		<li class="link">
+			Characters
+		</li>
+		<li class="link">
+			Houses
+		</li>
+		<li>
+			<form>
+				<input type="text" name="search">
+				<button type="submit">Search</button>
+			</form>
+		</li>
+	</ul>
+</nav>
