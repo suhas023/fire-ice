@@ -8,10 +8,27 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CardComponent implements OnInit {
 
   @Input() card;
+  cardType: string;
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
+    this.findCardType();
+    console.log(this.cardType);
   }
+
+
+  findCardType() {
+    if(this.card.url.includes("books"))
+      this.cardType = "book";
+
+    else if(this.card.url.includes("characters"))
+      this.cardType = "character";
+
+    else
+      this.cardType = "house"
+  }
+
 
 }

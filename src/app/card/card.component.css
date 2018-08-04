@@ -1,0 +1,16 @@
+.name {
+	font-size: 22px;
+	text-align: center;
+	font-weight: bold;
+	color: #4c4c4c;
+}
+
+.author {
+	text-align: right;
+}
+
+.page-date {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}

@@ -22,18 +22,6 @@ export class ApiServiceService {
     return this.http.get(this.apiUrl + "characters?name=" + name);
   }
 
-  // getHouseCard(name: string) {
-  //   return this.http.get(this.apiUrl + "houses?name=" + name);
-  // }
-
-  // getCards() {
-  //   return forkJoin (
-  //     this.http.get(this.apiUrl + "books"),
-  //     this.http.get(this.apiUrl + "characters"),
-  //     this.http.get(this.apiUrl + "houses")
-  //   );
-  // }
-
   getHouseCard(name: string) {
     return this.http.get(this.apiUrl + "house?name=" + name);
   }
