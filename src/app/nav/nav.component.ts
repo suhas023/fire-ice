@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, HostBinding } from '@angular/core';
+import { Component, OnInit, HostListener, HostBinding, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -14,9 +14,16 @@ export class NavComponent implements OnInit {
   ngOnInit() {
   }
 
+  @Output() event: EventEmitter<string[]> = new EventEmitter();
+
   @HostListener('click', ["$event"])
   dropDown(e) {
-  	if (e.target.nodeName === "I" || e.target.nodeName === "LI")
+  	if (e.target.nodeName === "I" || e.target.nodeName === "LI" )
   	this.showDropDown = !this.showDropDown;
+
+    if(e.target.nodeName === "LI") {
+      this.event.emit([e.target.nodeName, e.target.textContent.trim()])
+    }
+
   }
 }
