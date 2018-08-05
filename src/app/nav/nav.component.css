@@ -7,6 +7,10 @@ nav {
 	background-color: #f8f9fa;
 	display: flex;
 	flex-direction: column;
+	outline: 1px solid #4c4c4c;
+	-webkit-box-shadow: 0px 2px 12px -1px rgba(0,0,0,0.48);
+	-moz-box-shadow: 0px 2px 12px -1px rgba(0,0,0,0.48);
+	box-shadow: 0px 2px 12px -1px rgba(0,0,0,0.48);
 }
 
 .brand-drop {
