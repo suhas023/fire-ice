@@ -1,3 +1,19 @@
+.card {
+	height: 100%;
+	width: 100%;
+	padding: 2px;
+}
+.book {
+	outline: 5px solid #E0E0E0;
+}
+
+.character {
+	outline: 5px solid #FFCCCC;
+}
+
+.house {
+	outline: 5px solid #CCCCFF;
+}
 .name {
 	font-size: 22px;
 	text-align: center;
