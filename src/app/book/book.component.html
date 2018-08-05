@@ -1,3 +1,14 @@
-<p>
-  book works!
-</p>
+<div class="container">
+	<div class="header">
+		<h2>{{bookData.name}}</h2>
+	</div>
+	<div class="info">
+		<p>Author: <span class="bold">George R. R. Martin</span></p>
+		<p *ngIf="bookData.publisher">Publisher: <span class="bold">{{bookData.publisher}}</span></p>
+		<p *ngIf="bookData.country">Country: <span class="bold">{{bookData.country}}</span></p>
+		<p *ngIf="bookData.mediaType">Media Type: <span class="bold">{{bookData.mediaType}}</span></p>
+		<p *ngIf="bookData.released">publisher: <span class="bold">{{bookData.released | date}}</span></p>
+		<p *ngIf="bookData.isbn">isbn: <span class="bold">{{bookData.isbn}}</span></p>
+	</div>
+
+</div>

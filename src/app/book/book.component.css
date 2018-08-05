@@ -1,0 +1,50 @@
+.container {
+	width: 100%;
+	padding: 40px 10px 10px 10px;
+}
+
+.header, .info {
+	width: 280px;
+	margin: 0px auto 20px auto;
+	padding: 10px;
+	background-color: white;
+	outline: 1px solid #4c4c4c;
+	-webkit-box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	-moz-box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	transition: box-shadow 0.5s linear;
+	cursor: default;
+}
+
+.header h2 {
+	margin: 0px;
+	font-size: 28px;
+	text-align: center;
+	font-weight: bold;
+	color: #4c4c4c;
+	outline: 5px solid #A0A0A0;
+}
+
+.info {
+	outline: 5px solid #A0A0A0;
+	-webkit-box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	-moz-box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	transition: box-shadow 0.5s linear;
+	cursor: default;
+}
+
+.info p{
+	color: #4c4c4c;
+}
+
+.bold {
+	margin: 0px 0px 0px 5px;
+	font-weight: bold;
+}
+
+.header:hover, .info:hover {
+	box-shadow: none;
+}
+
+

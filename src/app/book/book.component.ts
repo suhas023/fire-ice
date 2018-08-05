@@ -11,9 +11,15 @@ export class BookComponent implements OnInit, DoCheck {
 
   bookTitle:string;
   bookData: any;
+  numberOfCharacters: number;
+  numberOfPovCharacters: number;
+  displayedCharacters: number;
+  displayedPovCharacters: number;
+
   constructor(private route: ActivatedRoute, private router: Router, 
     private apiService: ApiServiceService) {
-
+      this.displayedCharacters = 0;
+      this.displayedPovCharacters = 0;
   }
 
   ngOnInit() {
@@ -26,11 +32,16 @@ export class BookComponent implements OnInit, DoCheck {
     //   );
 
     this.bookData = tempData;
+    this.numberOfCharacters = this.bookData.characters.length;
+    this.numberOfPovCharacters = this.bookData.povCharacters.length;
+
+    console.log(this.numberOfCharacters, this.numberOfPovCharacters);
   }
 
   ngDoCheck() {
     console.log(this.bookData);
   }
+
 
 }
 
