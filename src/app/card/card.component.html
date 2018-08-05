@@ -1,5 +1,5 @@
 <div *ngIf="cardType==='book'" class="card" [routerLink]="['/book']"
-	[queryParams]="{'name':card.name}">
+	[queryParams]="{'id':getId(card.url)}">
 	<div class="book"><small>(book)</small></div>
 	<div class="name">{{card.name}}</div>
 	<div class="author"><small>{{card.authors[0]}}</small></div>
@@ -14,7 +14,7 @@
 </div>
 
 <div *ngIf="cardType==='character'" class="card" [routerLink]="['/book']"
-	[queryParams]="{'id':id}">
+	[queryParams]="{'id':getId(card.url)}">
 	<div class="character"><small>(character)</small></div>
 	<div class="name">{{card.name?card.name:'Common Character'}}</div>
 	<div class="aliases">
@@ -32,7 +32,8 @@
 	</div>
 </div>
 
-<div *ngIf="cardType==='house'" class="card">
+<div *ngIf="cardType==='house'" class="card" [routerLink]="['/book']"
+	[queryParams]="{'id':getId(card.url)}">
 	<div class="character"><small>(house)</small></div>
 	<div class="name">{{card.name?card.name:'Common House'}}</div>
 	<div class="region">

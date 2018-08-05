@@ -9,7 +9,6 @@ export class CardComponent implements OnInit {
 
   @Input() card;
   cardType: string;
-  id: string;
 
   constructor() {
   }
@@ -29,11 +28,9 @@ export class CardComponent implements OnInit {
 
     else
       this.cardType = "house"
-
-    this.id = this.getID(this.card.url);
   }
 
-  getID(url) {
+  getId(url) {
     return url.substr(url.lastIndexOf('/') + 1);
   }
 
