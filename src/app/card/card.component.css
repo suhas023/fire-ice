@@ -4,15 +4,15 @@
 	padding: 2px;
 }
 .book {
-	outline: 5px solid #E0E0E0;
+	outline: 5px solid #A0A0A0;
 }
 
 .character {
-	outline: 5px solid #FFCCCC;
+	outline: 5px solid #FF9999;
 }
 
 .house {
-	outline: 5px solid #CCCCFF;
+	outline: 5px solid #66b2FF;
 }
 .name {
 	font-size: 22px;
