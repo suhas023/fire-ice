@@ -1,1 +1,4 @@
-<app-card-list [cards]="'selectedCards'"></app-card-list>
+<app-card-list *ngIf="selectedCards===bookCards" [cards]="bookCards"></app-card-list>
+<app-card-list *ngIf="selectedCards===characterCards" [cards]="characterCards"></app-card-list>
+<app-card-list *ngIf="selectedCards===houseCards" [cards]="houseCards"></app-card-list>
+<app-card-list [cards]="selectedCards"></app-card-list>

@@ -1,13 +1,45 @@
-<div *ngIf="cardType==='book'" class="card">
+<div *ngIf="cardType==='book'" class="card" [routerLink]="['/book']"
+	[queryParams]="{'name':card.name}">
 	<div class="book"><small>(book)</small></div>
 	<div class="name">{{card.name}}</div>
 	<div class="author"><small>{{card.authors[0]}}</small></div>
-	<div class="page-date">
+	<div class="meta">
 		<small>
 			{{card.numberOfPages + ' pages'}}
 		</small>
 		<small>
 			{{card.released | date}}
 		</small>
+	</div>
+</div>
+
+<div *ngIf="cardType==='character'" class="card" [routerLink]="['/home']">
+	<div class="character"><small>(character)</small></div>
+	<div class="name">{{card.name?card.name:'Common Character'}}</div>
+	<div class="aliases">
+		<span *ngFor="let alias of card.aliases; let last=last">
+			<small>{{alias}}{{last?'':', '}}</small>
+		</span>
+	</div>
+	<div class="meta">
+		<small>
+			{{card.culture}}
+		</small>
+		<small>
+			{{card.gender}}
+		</small>
+	</div>
+</div>
+
+<div *ngIf="cardType==='house'" class="card">
+	<div class="character"><small>(house)</small></div>
+	<div class="name">{{card.name?card.name:'Common House'}}</div>
+	<div class="region">
+		<small>
+			{{card.region}}
+		</small>
+	</div>
+	<div>
+		<small *ngIf="card.words">{{card.words}}</small>
 	</div>
 </div>

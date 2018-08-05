@@ -9,8 +9,9 @@ export class CardComponent implements OnInit {
 
   @Input() card;
   cardType: string;
+  id: string;
 
-  constructor() { 
+  constructor() {
   }
 
   ngOnInit() {
@@ -28,6 +29,12 @@ export class CardComponent implements OnInit {
 
     else
       this.cardType = "house"
+
+    this.id = this.getID(this.card.url);
+  }
+
+  getID(url) {
+    return url.substr(url.lastIndexOf('/') + 1);
   }
 
 

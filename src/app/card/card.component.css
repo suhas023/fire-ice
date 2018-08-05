@@ -5,12 +5,16 @@
 	color: #4c4c4c;
 }
 
-.author {
+.author,.aliases,.region {
 	text-align: right;
 }
 
-.page-date {
+.meta {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+}
+
+small {
+	font-size: 14px;
 }

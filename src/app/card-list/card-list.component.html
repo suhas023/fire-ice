@@ -1,7 +1,6 @@
 <div *ngIf="cards" class="cards-container">
 	<app-card
-		*ngFor="let card of tempCards" [card]="card" class="card-shell"
-		[routerLink]="['/book']" [queryParams]="{'name':card.name}"
+		*ngFor="let card of cards" [card]="card" class="card-shell"
 	>
 	</app-card>
 </div>
