@@ -10,5 +10,24 @@
 		<p *ngIf="bookData.released">publisher: <span class="bold">{{bookData.released | date}}</span></p>
 		<p *ngIf="bookData.isbn">isbn: <span class="bold">{{bookData.isbn}}</span></p>
 	</div>
-
+	<div class="pov-characters">
+		<div class="label-cards">
+			<div class="label">
+				<h2>Point of View Characters</h2>
+			</div>
+			<app-card-list [cards]="povCards"></app-card-list>
+			<div class="load" (click)="getCards('pov')">
+				<h2>Load More</h2>
+			</div>
+		</div>	
+		<div class="label-cards">
+			<div class="label">
+				<h2>Supporting Characters</h2>
+			</div>
+			<app-card-list [cards]="characterCards"></app-card-list>
+			<div class="load" (click)="getCards('character')">
+				<h2>Load More</h2>
+			</div>
+		</div>		
+	</div>
 </div>

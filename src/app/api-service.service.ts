@@ -33,4 +33,12 @@ export class ApiServiceService {
       this.http.get(this.apiUrl + "houses")
     );
   }
+
+  getCardsFromLinks(links:string[], holder:any[]) {
+    for(let i = 0; i < links.length; i++) {
+      this.http.get(links[i]).subscribe(data => holder.push(data));
+    }
+  }
+
+
 }

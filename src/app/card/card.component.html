@@ -17,12 +17,10 @@
 	[queryParams]="{'id':getId(card.url)}">
 	<div><small>(character)</small></div>
 	<div class="name">{{card.name?card.name:'Common Character'}}</div>
-	<div class="aliases">
-		<span *ngFor="let alias of card.aliases; let last=last">
-			<small>{{alias}}{{last?'':', '}}</small>
-		</span>
+	<div class="aliases" *ngIf="card.aliases[0]">
+		<small >{{card.aliases[0]}}</small>
 	</div>
-	<div class="meta">
+	<div class="meta" *ngIf="card.culture || card.gender">
 		<small>
 			{{card.culture}}
 		</small>

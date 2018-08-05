@@ -11,8 +11,10 @@ export class BookComponent implements OnInit, DoCheck {
 
   bookTitle:string;
   bookData: any;
-  numberOfCharacters: number;
-  numberOfPovCharacters: number;
+  characterCards: any[];
+  povCards: any[];
+  characterLinks: string[];
+  povLinks: string[]
   displayedCharacters: number;
   displayedPovCharacters: number;
 
@@ -20,6 +22,8 @@ export class BookComponent implements OnInit, DoCheck {
     private apiService: ApiServiceService) {
       this.displayedCharacters = 0;
       this.displayedPovCharacters = 0;
+      this.characterCards = [];
+      this.povCards = []
   }
 
   ngOnInit() {
@@ -32,16 +36,32 @@ export class BookComponent implements OnInit, DoCheck {
     //   );
 
     this.bookData = tempData;
-    this.numberOfCharacters = this.bookData.characters.length;
-    this.numberOfPovCharacters = this.bookData.povCharacters.length;
+    this.characterLinks = this.bookData.characters;
+    this.povLinks = this.bookData.povCharacters;
 
-    console.log(this.numberOfCharacters, this.numberOfPovCharacters);
+    this.getCards('character');
+    this.getCards('pov');
   }
 
   ngDoCheck() {
-    console.log(this.bookData);
+    console.log(this.characterCards, this.povCards);
   }
 
+  getCards(type: string) {
+      if(type === 'character') {
+          this.apiService.getCardsFromLinks(
+              this.characterLinks.slice(this.displayedCharacters,this.displayedCharacters + 5), 
+              this.characterCards);
+
+          this.displayedCharacters += 5;
+      } else {
+          this.apiService.getCardsFromLinks(
+              this.povLinks.slice(this.displayedPovCharacters,this.displayedPovCharacters + 5), 
+              this.povCards);
+
+          this.displayedPovCharacters += 5;
+      }
+  }
 
 }
 
