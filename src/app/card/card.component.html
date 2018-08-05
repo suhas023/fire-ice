@@ -13,7 +13,8 @@
 	</div>
 </div>
 
-<div *ngIf="cardType==='character'" class="card" [routerLink]="['/home']">
+<div *ngIf="cardType==='character'" class="card" [routerLink]="['/book']"
+	[queryParams]="{'id':id}">
 	<div class="character"><small>(character)</small></div>
 	<div class="name">{{card.name?card.name:'Common Character'}}</div>
 	<div class="aliases">
