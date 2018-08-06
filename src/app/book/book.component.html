@@ -17,7 +17,7 @@
 			</div>
 			<app-card-list [cards]="povCards"></app-card-list>
 			<div class="load" (click)="getCards('pov')">
-				<h2>Load More</h2>
+				<h2>{{povLoaded?'All Loaded':'Load More'}}</h2>
 			</div>
 		</div>	
 		<div class="label-cards">
@@ -26,7 +26,7 @@
 			</div>
 			<app-card-list [cards]="characterCards"></app-card-list>
 			<div class="load" (click)="getCards('character')">
-				<h2>Load More</h2>
+				<h2>{{characterLoaded?'All Loaded':'Load More'}}</h2>
 			</div>
 		</div>		
 	</div>
