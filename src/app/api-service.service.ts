@@ -34,10 +34,13 @@ export class ApiServiceService {
     );
   }
 
-  getCardsFromLinks(links:string[], holder:any[]) {
+  getCardsFromLinks(links:string[]) {
+    let httpObservables = [];
     for(let i = 0; i < links.length; i++) {
-      this.http.get(links[i]).subscribe(data => holder.push(data));
+      httpObservables.push(this.http.get(links[i]));
     }
+
+    return forkJoin(...httpObservables);
   }
 
 

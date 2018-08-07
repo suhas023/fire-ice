@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, DoCheck } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router'
-import { ApiServiceService } from '../api-service.service'
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiServiceService } from '../api-service.service';
+import { Observable } from 'rxjs';
+import { HttpResponse } from '@angular/common/http'
 
 @Component({
   selector: 'app-book',
@@ -20,7 +22,7 @@ export class BookComponent implements OnInit, DoCheck {
   povLoaded: boolean;
   characterLoaded: boolean;
 
-  constructor(private route: ActivatedRoute, private router: Router, 
+  constructor(private route: ActivatedRoute, private router: Router,
     private apiService: ApiServiceService) {
       this.displayedCharacters = 0;
       this.displayedPovCharacters = 0;
@@ -36,7 +38,7 @@ export class BookComponent implements OnInit, DoCheck {
     // this.apiService.getBookCard(this.bookTitle)
     //   .subscribe(data => {
     //       this.bookData = data[0];
-    //     } 
+    //     }
     //   );
 
     this.bookData = tempData;
@@ -55,27 +57,28 @@ export class BookComponent implements OnInit, DoCheck {
       if(type === 'character') {
           if(!this.characterLoaded) {
               this.apiService.getCardsFromLinks(
-                  this.characterLinks.slice(this.displayedCharacters,this.displayedCharacters + 5), 
-                  this.characterCards);
-              this.displayedCharacters += 5;
-            
-
-              if(this.displayedCharacters >= this.characterLinks.length) 
-                  this.characterLoaded = true;
+                  this.characterLinks.slice(this.displayedCharacters,this.displayedCharacters + 5))
+              .subscribe(res => {
+                  for(let i = 0; i < res.length; i++) {
+                      this.characterCards.push(res[i]);
+                  }
+                  this.displayedCharacters += 5;
+                  if(this.displayedCharacters >= this.characterLinks.length)
+                      this.characterLoaded = true;
+              });
             }
       } else {
-          if(!this.povLoaded){
               this.apiService.getCardsFromLinks(
-                  this.povLinks.slice(this.displayedPovCharacters,this.displayedPovCharacters + 5), 
-                  this.povCards);
-              this.displayedPovCharacters += 5;
-
-              if(this.displayedPovCharacters >= this.povLinks.length) 
-                  this.povLoaded = true;
-            }
+                  this.povLinks.slice(this.displayedPovCharacters,this.displayedPovCharacters + 5))
+              .subscribe(res => {
+                  for(let i = 0; i < res.length; i++) {
+                      this.povCards.push(res[i]);
+                  }
+                  this.displayedPovCharacters += 5;
+                  if(this.displayedPovCharacters >= this.povLinks.length)
+                      this.povLoaded = true;
+              });
       }
-  }
-
 }
 
 
