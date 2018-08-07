@@ -14,16 +14,16 @@ export class ApiServiceService {
   }
 
 
-  getBookCard(name: string) {
-    return this.http.get(this.apiUrl + "books?name=" + name);
+  getBookCard(id: string) {
+    return this.http.get(this.apiUrl + "books/" + id);
   }
 
-  getCharacterCard(name: string) {
-    return this.http.get(this.apiUrl + "characters?name=" + name);
+  getCharacterCard(id: string) {
+    return this.http.get(this.apiUrl + "characters/" + id);
   }
 
-  getHouseCard(name: string) {
-    return this.http.get(this.apiUrl + "house?name=" + name);
+  getHouseCard(id: string) {
+    return this.http.get(this.apiUrl + "house/" + id);
   }
 
   getCards() {

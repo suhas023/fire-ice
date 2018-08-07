@@ -4,11 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BookComponent } from './book/book.component';
 import { HomeComponent } from './home/home.component';
+import { CharacterComponent } from './character/character.component'
+import { HouseComponent } from './house/house.component'
 
 const routes:Routes = [
-  {path: "", component: HomeComponent},
-  { path:"book", component: BookComponent }
-]
+  { path: "", component: HomeComponent},
+  { path:"book", component: BookComponent },
+  { path: "character", component: CharacterComponent },
+  { path: "house", component: HomeComponent }
+];
 
 @NgModule({
   imports: [

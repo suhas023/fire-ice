@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
-import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http'
 
 @Component({
@@ -11,7 +10,7 @@ import { HttpResponse } from '@angular/common/http'
 })
 export class BookComponent implements OnInit, DoCheck {
 
-  bookTitle:string;
+  bookId:string;
   bookData: any;
   characterCards: any[];
   povCards: any[];
@@ -33,8 +32,8 @@ export class BookComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
-    this.route.queryParamMap.subscribe(data => this.bookTitle = data.get("name"));
-    console.log(this.bookTitle);
+    this.route.queryParamMap.subscribe(data => this.bookId = data.get("id"));
+    console.log(this.bookId);
     // this.apiService.getBookCard(this.bookTitle)
     //   .subscribe(data => {
     //       this.bookData = data[0];
