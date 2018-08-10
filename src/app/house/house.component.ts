@@ -19,10 +19,14 @@ export class HouseComponent implements OnInit, DoCheck {
   swornMembersLinks: string[];
   cadetBranches: any[];
   swornMembers: any[];
+  displayedMembers: number;
 
   constructor(private route: ActivatedRoute, private apiService: ApiServiceService) {
     this.cadetBranchesLinks = [];
     this.swornMembersLinks = [];
+    this.cadetBranches = [];
+    this.swornMembers = []
+    this.displayedMembers = 0;
   }
 
   ngOnInit() {
@@ -36,10 +40,57 @@ export class HouseComponent implements OnInit, DoCheck {
     this.cadetBranchesLinks = jsonData.cadetBranches;
     this.swornMembersLinks = jsonData.swornMembers;
 
+    this.getRelatedInfo();
+
   }
 
   ngDoCheck() {
-    console.log(this.houseData);
+    console.log("-------------------------------");
+    console.log(this.currentLord);
+    console.log(this.heir);
+    console.log(this.overlord);
+    console.log(this.founder);
+    console.log(this.cadetBranches);
+    console.log(this.swornMembers);
+    console.log("-------------------------------");
+
+  }
+
+  getRelatedInfo(){
+    if(this.houseData.currentLord)
+      this.apiService.getCardsFromLinks([this.houseData.currentLord])
+        .subscribe(data => this.currentLord = data[0]);
+
+    if(this.houseData.heir)
+      this.apiService.getCardsFromLinks([this.houseData.heir])
+        .subscribe(data => this.heir = data[0]);
+
+    if(this.houseData.overlord)
+      this.apiService.getCardsFromLinks([this.houseData.overlord])
+        .subscribe(data => this.overlord = data[0]);
+
+    if(this.houseData.founder)
+      this.apiService.getCardsFromLinks([this.houseData.founder])
+        .subscribe(data => this.founder = data[0]);
+
+    if(this.cadetBranchesLinks)
+      this.apiService.getCardsFromLinks(this.cadetBranchesLinks)
+        .subscribe(data => data.forEach(res => this.cadetBranches.push(res)));
+
+    if(this.swornMembersLinks)
+      this.getSwornMembers();
+
+  }
+
+  getSwornMembers() {
+    if(this.displayedMembers < this.swornMembersLinks.length)
+      this.apiService.getCardsFromLinks(this.swornMembersLinks
+          .slice(this.displayedMembers, this.displayedMembers + 5))
+        .subscribe(data => {
+          data.forEach(res => this.swornMembers.push(res));
+          this.displayedMembers += 5;
+        }
+      );
   }
 
 }
