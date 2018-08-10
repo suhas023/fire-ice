@@ -10,7 +10,12 @@ import { ApiServiceService } from '../api-service.service';
 export class CharacterComponent implements OnInit, DoCheck {
   characterData: any;
   characterId: string;
-
+  father: any;
+  mother: any;
+  spouse: any;
+  allegiances: any[] = [];
+  books: any[] = [];
+  povBooks: any[] = [];
 
   constructor( private route: ActivatedRoute, private router: Router, private apiService: ApiServiceService ) {
 
@@ -24,12 +29,45 @@ export class CharacterComponent implements OnInit, DoCheck {
     //     this.characterData = data;
     //   }
     // );
+    this.characterData = jsonData[0];
+    this.getRelatedInfo();
+  }
 
-    this.characterData = jsonData;
+  getRelatedInfo() {
+    console.log(this.characterData.father, this.characterData.allegiances, this.characterData.books, this.characterData.povBooks);
+    if(this.characterData.father)
+      this.apiService.getCardsFromLinks([this.characterData.father])
+        .subscribe(data => this.father = data[0]);
+
+    if(this.characterData.mother)
+      this.apiService.getCardsFromLinks([this.characterData.mother])
+        .subscribe(data => this.mother = data[0]);
+
+    if(this.characterData.spouse)
+      this.apiService.getCardsFromLinks([this.characterData.spouse])
+        .subscribe(data => this.spouse = data[0]);
+
+    if(this.characterData.allegiances)
+      this.apiService.getCardsFromLinks(this.characterData.allegiances)
+        .subscribe(data => {
+          data.forEach(res => this.allegiances.push(res));
+        });
+
+    if(this.characterData.books)
+      this.apiService.getCardsFromLinks(this.characterData.books)
+        .subscribe(data => data.forEach(res => this.books.push(res)));
+
+    if(this.characterData.povBooks)
+      this.apiService.getCardsFromLinks(this.characterData.povBooks)
+        .subscribe(data => data.forEach(res => this.povBooks.push(res)));
   }
 
   ngDoCheck() {
     console.log(this.characterData);
+    console.log(this.povBooks);
+    console.log(this.books);
+    console.log(this.allegiances);
+    console.log(this.father);
   }
 
   getId(url: string) {

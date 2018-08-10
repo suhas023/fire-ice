@@ -52,7 +52,7 @@ export class BookComponent implements OnInit, DoCheck {
     console.log(this.characterCards, this.povCards);
   }
 
-  getCards(type: string) {
+    getCards(type: string) {
       if(type === 'character') {
           if(!this.characterLoaded) {
               this.apiService.getCardsFromLinks(
@@ -78,9 +78,9 @@ export class BookComponent implements OnInit, DoCheck {
                       this.povLoaded = true;
               });
       }
+    }
+
 }
-
-
 let tempData = {
   "url": "https://anapioficeandfire.com/api/books/1",
   "name": "A Game of Thrones",

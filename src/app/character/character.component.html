@@ -1,3 +1,109 @@
-<p>
-  character works!
-</p>
+<div class="container">
+	<div class="header">
+		<h2>{{characterData.name}}</h2>
+	</div>
+	<div class="info" *ngIf="characterData.titles[0]">
+		<p class="title"><span>{{characterData.titles[0]}}</span></p>
+	</div>
+	<div class="info">
+		<p *ngIf="characterData.gender" class="key-bold">
+			<span class="key">Gender:</span>
+			<span class="bold">
+				{{characterData.gender}}
+			</span>
+		</p>
+		<p *ngIf="characterData.culture" class="key-bold">
+			<span class="key">Culture:</span>
+			<span class="bold">
+				{{characterData.culture}}
+			</span>
+		</p>
+		<p *ngIf="characterData.born" class="key-bold">
+			<span class="key">Born:</span>
+			<span class="bold">
+				{{characterData.born}}
+			</span>
+		</p>
+		<p *ngIf="characterData.died" class="key-bold">
+			<span class="key">Died:</span>
+			<span class="bold">
+				{{characterData.died}}
+			</span>
+		</p>
+		<p *ngIf="characterData.father" class="key-bold click" [routerLink]="['/character']"
+			[queryParams]="{'id':getId(characterData.father.url)}">
+			<span class="key">Father:</span>
+			<span class="bold">
+				{{characterData.father}}
+			</span>
+		</p>
+		<p *ngIf="characterData.mother" class="key-bold click" [routerLink]="['/character']"
+			[queryParams]="{'id':getId(characterData.mother.url)}">
+			<span class="key">Mother:</span>
+			<span class="bold">
+				{{characterData.mother}}
+			</span>
+		</p>
+		<p *ngIf="characterData.spouse" class="key-bold click" [routerLink]="['/character']"
+			[queryParams]="{'id':getId(characterData.spouse.url)}">
+			<span class="key">Spouse:</span>
+			<span class="bold">
+				{{characterData.spouse}}
+			</span>
+		</p>
+
+		<p *ngIf="characterData.titles" class="key-bold">
+			<span class="key">Titles:</span>
+			<span class="bold">
+				<span *ngFor="let title of characterData.titles; let last=last">
+					{{last?title:title + ', '}}
+				</span>
+			</span>
+		</p>
+		<p *ngIf="allegiances" class="key-bold">
+			<span class="key">Allegiances:</span>
+			<span class="bold">
+				<span *ngFor="let allegiance of allegiances; let last=last" [routerLink]="['/house']"
+			[queryParams]="{'id': getId(allegiance.url)}" class="click">
+					{{last ? allegiance.name : allegiance.name + ', '}}
+				</span>
+			</span>
+		</p>
+		<p *ngIf="characterData.playedBy" class="key-bold">
+			<span class="key"> Played By:</span>
+			<span class="bold">
+				{{characterData.playedBy}}
+			</span>
+		</p>
+		<p *ngIf="characterData.tvSeries" class="key-bold">
+			<span class="key">Tv Series:</span>
+			<span class="bold">
+				<span *ngFor="let tv of characterData.tvSeries; let last=last">
+					{{last? tv : tv + ', '}}
+				</span>
+			</span>
+		</p>
+		<p *ngIf="characterData.aliases" class="key-bold">
+			<span class="key">Aliases:</span>
+			<span class="bold">
+				<span *ngFor="let alias of characterData.aliases; let last=last">
+					{{last ? alias : alias + ','}}
+				</span>
+			</span>
+		</p>
+	</div>
+	<div class="pov-books" *ngIf="books || povBooks">
+		<div class="label-cards">
+			<div class="label">
+				<h2>Point of View Books</h2>
+			</div>
+			<app-card-list [cards]="povBooks"></app-card-list>
+		</div>
+		<div class="label-cards">
+			<div class="label">
+				<h2>Books</h2>
+			</div>
+			<app-card-list [cards]="books"></app-card-list>
+		</div>
+	</div>
+</div>

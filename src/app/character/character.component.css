@@ -1,0 +1,128 @@
+.container {
+	width: 100%;
+	min-height: 100vh;
+	padding: 40px 0px;
+}
+
+.header {
+	width: 280px;
+	margin: 0px auto 20px auto;
+	padding: 10px;
+	background-color: white;
+	-webkit-box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	-moz-box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	transition: box-shadow 0.5s linear;
+	outline: 1px solid #4c4c4c;
+	cursor: default;
+}
+
+.header h2 {
+	margin: 0px;
+	font-size: 28px;
+	text-align: center;
+	font-weight: bold;
+	color: #4c4c4c;
+}
+
+.header h2 {
+	outline: 5px solid #FF9999;
+}
+
+
+.info{
+	width: 480px;
+	margin: 40px auto;
+	padding: 10px;
+	background-color: white;
+	-webkit-box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	-moz-box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	transition: box-shadow 0.5s linear;
+}
+
+.info {
+	outline: 5px solid #FF9999;
+	cursor: default;
+}
+
+.key-bold{
+	color: #4c4c4c;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+}
+
+.bold {
+	margin: 0px 0px 0px 5px;
+	font-weight: bold;
+	font-size: 18px;
+	flex: 1;
+}
+
+.title {
+	color: #4c4c4c;
+	text-align: center;
+	font-size: 23px;
+}
+
+.pov-books {
+	margin-top: 50px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.label{
+	width: 280px;
+	margin: 0px auto 20px auto;
+	padding: 10px;
+	background-color: white;
+	-webkit-box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	-moz-box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	box-shadow: -5px 5px 12px -1px rgba(0,0,0,0.48);
+	transition: box-shadow 0.5s linear;
+	outline: 1px solid #4c4c4c;
+	cursor: default;
+}
+
+.label-cards {
+	margin: 15px 0px;
+	flex: 0 0 280px;
+	display: flex;
+	padding: 0px;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+
+.label h2 {
+	margin: 0px;
+	font-size: 28px;
+	text-align: center;
+	font-weight: bold;
+	color: #4c4c4c;
+	outline: 5px solid #FF9999;
+}
+
+.header:hover, .info:hover, .label:hover {
+	box-shadow: none;
+}
+
+.click {
+	cursor: pointer;
+}
+
+.click:hover {
+	text-decoration: underline;
+}
+
+@media screen and (max-width: 480px) {
+	.info {
+		width: 100%;
+	}
+}
