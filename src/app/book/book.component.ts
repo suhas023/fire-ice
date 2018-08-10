@@ -32,11 +32,12 @@ export class BookComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
-    this.route.queryParamMap.subscribe(data => this.bookId = data.get("id"));
+    this.route.queryParamMap
+        .subscribe(data => this.bookId = data.get("id"));
     console.log(this.bookId);
     // this.apiService.getBookCard(this.bookTitle)
     //   .subscribe(data => {
-    //       this.bookData = data[0];
+    //       this.bookData = data;
     //     }
     //   );
 

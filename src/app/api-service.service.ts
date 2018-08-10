@@ -23,7 +23,7 @@ export class ApiServiceService {
   }
 
   getHouseCard(id: string) {
-    return this.http.get(this.apiUrl + "house/" + id);
+    return this.http.get(this.apiUrl + "houses/" + id);
   }
 
   getCards() {
