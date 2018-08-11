@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container" *ngIf="characterData">
 	<div class="header">
-		<h2>{{characterData.name}}</h2>
+		<h2>{{characterData.name?characterData.name:'Common Character'}}</h2>
 	</div>
-	<div class="info" *ngIf="characterData.titles[0]">
+	<div class="info" *ngIf="characterData && characterData.titles[0]">
 		<p class="title"><span>{{characterData.titles[0]}}</span></p>
 	</div>
 	<div class="info">
@@ -30,29 +30,28 @@
 				{{characterData.died}}
 			</span>
 		</p>
-		<p *ngIf="characterData.father" class="key-bold" [routerLink]="['/character']"
-			[queryParams]="{'id':getId(characterData.father.url)}">
+		<p *ngIf="characterData.father && father" class="key-bold">
 			<span class="key">Father:</span>
-			<span class="bold click">
-				{{characterData.father}}
-			</span>
+			<a class="bold click" [routerLink]="['/character']"
+			[queryParams]="{'id':getId(father.url)}">
+				{{father.name}}
+			</a>
 		</p>
-		<p *ngIf="characterData.mother" class="key-bold" [routerLink]="['/character']"
-			[queryParams]="{'id':getId(characterData.mother.url)}">
-			<span class="key">Mother:</span>
-			<span class="bold click">
-				{{characterData.mother}}
-			</span>
-		</p>
-		<p *ngIf="characterData.spouse" class="key-bold" [routerLink]="['/character']"
-			[queryParams]="{'id':getId(characterData.spouse.url)}">
+		<p *ngIf="characterData.spouse && spouse" class="key-bold">
 			<span class="key">Spouse:</span>
-			<span class="bold click">
-				{{characterData.spouse}}
-			</span>
+			<a class="bold click" [routerLink]="['/character']"
+			[queryParams]="{'id':getId(spouse.url)}">
+				{{spouse.name}}
+			</a>
 		</p>
-
-		<p *ngIf="characterData.titles" class="key-bold">
+		<p *ngIf="characterData.mother && mother" class="key-bold">
+			<span class="key">Mother:</span>
+			<a class="bold click" [routerLink]="['/character']"
+			[queryParams]="{'id':getId(mother.url)}">
+				{{mother.name}}
+			</a>
+		</p>
+		<p *ngIf="characterData.titles && characterData.titles[0]" class="key-bold">
 			<span class="key">Titles:</span>
 			<span class="bold">
 				<span *ngFor="let title of characterData.titles; let last=last">
@@ -60,22 +59,22 @@
 				</span>
 			</span>
 		</p>
-		<p *ngIf="allegiances" class="key-bold">
+		<p *ngIf="allegiances.length" class="key-bold">
 			<span class="key">Allegiances:</span>
 			<span class="bold">
-				<span *ngFor="let allegiance of allegiances; let last=last" [routerLink]="['/house']"
+				<a *ngFor="let allegiance of allegiances; let last=last" [routerLink]="['/house']"
 			[queryParams]="{'id': getId(allegiance.url)}" class="click">
 					{{last ? allegiance.name : allegiance.name + ', '}}
-				</span>
+				</a>
 			</span>
 		</p>
-		<p *ngIf="characterData.playedBy" class="key-bold">
+		<p *ngIf="characterData.playedBy && characterData.playedBy[0]" class="key-bold">
 			<span class="key"> Played By:</span>
 			<span class="bold">
 				{{characterData.playedBy}}
 			</span>
 		</p>
-		<p *ngIf="characterData.tvSeries" class="key-bold">
+		<p *ngIf="characterData.tvSeries && characterData.tvSeries[0]" class="key-bold">
 			<span class="key">Tv Series:</span>
 			<span class="bold">
 				<span *ngFor="let tv of characterData.tvSeries; let last=last">
@@ -83,7 +82,7 @@
 				</span>
 			</span>
 		</p>
-		<p *ngIf="characterData.aliases" class="key-bold">
+		<p *ngIf="characterData.aliases && characterData.aliases[0]" class="key-bold">
 			<span class="key">Aliases:</span>
 			<span class="bold">
 				<span *ngFor="let alias of characterData.aliases; let last=last">

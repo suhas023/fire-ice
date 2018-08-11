@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="bookData">
 	<div class="header">
 		<h2>{{bookData.name}}</h2>
 	</div>
@@ -17,7 +17,7 @@
 			</div>
 			<app-card-list [cards]="povCards"></app-card-list>
 			<div [ngClass]="{'load':!povLoaded, 'loaded':povLoaded}" (click)="getCards('pov')">
-				<h2>{{povLoaded?'All Loaded':'Load More'}}</h2>
+				<h2>{{povLoaded?'None Left':'Load More'}}</h2>
 			</div>
 		</div>
 		<div class="label-cards">

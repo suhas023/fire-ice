@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="houseData">
 	<div class="header">
 		<h2>{{houseData.name}}</h2>
 	</div>
@@ -24,7 +24,7 @@
 				{{houseData.founded}}
 			</span>
 		</p>
-		<p *ngIf="houseData.titles" class="key-bold">
+		<p *ngIf="houseData.titles && houseData.titles[0]" class="key-bold">
 			<span class="key">Titles:</span>
 			<span class="bold">
 				<span *ngFor="let title of houseData.titles; let last=last">
@@ -32,7 +32,7 @@
 				</span>
 			</span>
 		</p>
-		<p *ngIf="houseData.seats" class="key-bold">
+		<p *ngIf="houseData.seats && houseData.seats[0]" class="key-bold">
 			<span class="key">Seats:</span>
 			<span class="bold">
 				<span *ngFor="let seat of houseData.seats; let last=last">
@@ -40,33 +40,33 @@
 				</span>
 			</span>
 		</p>
-		<p *ngIf="currentLord" class="key-bold" [routerLink]="['/character']"
-			[queryParams]="{'id':getId(currentLord.url)}">
+		<p *ngIf="currentLord" class="key-bold">
 			<span class="key">Current Lord:</span>
-			<span class="bold click">
+			<a class="bold click" [routerLink]="['/character']"
+			[queryParams]="{'id':getId(currentLord.url)}">
 				{{currentLord.name}}
-			</span>
+			</a>
 		</p>
-		<p *ngIf="heir" class="key-bold" [routerLink]="['/character']"
-			[queryParams]="{'id':getId(heir.url)}">
+		<p *ngIf="heir" class="key-bold">
 			<span class="key">Heir:</span>
-			<span class="bold click">
+			<a class="bold click" [routerLink]="['/character']"
+			[queryParams]="{'id':getId(heir.url)}">
 				{{heir.name}}
-			</span>
+			</a>
 		</p>
-		<a *ngIf="overlord" class="key-bold" [routerLink]="['/house']"
-			[queryParams]="{'id':getId(overlord.url)}">
+		<a *ngIf="overlord" class="key-bold">
 			<span class="key">Overlord:</span>
-			<span class="bold click">
+			<a class="bold click" [routerLink]="['/house']"
+			[queryParams]="{'id':getId(overlord.url)}">
 				{{overlord.name}}
-			</span>
+			</a>
 		</a>
-		<p *ngIf="founder" class="key-bold" [routerLink]="['/character']"
-			[queryParams]="{'id':getId(founder.url)}">
+		<p *ngIf="founder" class="key-bold">
 			<span class="key">Founder:</span>
-			<span class="bold click">
+			<a class="bold click" [routerLink]="['/character']"
+			[queryParams]="{'id':getId(founder.url)}">
 				{{founder.name}}
-			</span>
+			</a>
 		</p>
 		<p *ngIf="houseData.diedOut" class="key-bold">
 			<span class="key">Died Out:</span>
@@ -74,7 +74,7 @@
 				{{houseData.diedOut}}
 			</span>
 		</p>
-		<p *ngIf="houseData.ancestralWeapons" class="key-bold">
+		<p *ngIf="houseData.ancestralWeapons && houseData.ancestralWeapons[0]" class="key-bold">
 			<span class="key">Ancestral Weapons:</span>
 			<span class="bold">
 				<span *ngFor="let wp of houseData.ancestralWeapons; let last=last">
@@ -83,14 +83,14 @@
 			</span>
 		</p>
 	</div>
-	<div class="branches-members" *ngIf="cadetBranches || swornMembers">
-		<div class="label-cards">
+	<div class="branches-members">
+		<div class="label-cards" *ngIf="cadetBranches.length">
 			<div class="label">
 				<h2>Cadet Branches</h2>
 			</div>
 			<app-card-list [cards]="cadetBranches"></app-card-list>
 		</div>
-		<div class="label-cards">
+		<div class="label-cards" *ngIf="swornMembers.length">
 			<div class="label">
 				<h2>Sworn Members</h2>
 			</div>
