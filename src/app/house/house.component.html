@@ -1,3 +1,100 @@
-<p>
-  house works!
-</p>
+<div class="container">
+	<div class="header">
+		<h2>{{houseData.name}}</h2>
+	</div>
+	<div class="info" *ngIf="houseData.words">
+		<p class="title"><span>{{houseData.words}}</span></p>
+	</div>
+	<div class="info">
+		<p *ngIf="houseData.region" class="key-bold">
+			<span class="key">Region:</span>
+			<span class="bold">
+				{{houseData.region}}
+			</span>
+		</p>
+		<p *ngIf="houseData.coatOfArms" class="key-bold">
+			<span class="key">Coat of Arms:</span>
+			<span class="bold">
+				{{houseData.coatOfArms}}
+			</span>
+		</p>
+		<p *ngIf="houseData.founded" class="key-bold">
+			<span class="key">Founded:</span>
+			<span class="bold">
+				{{houseData.founded}}
+			</span>
+		</p>
+		<p *ngIf="houseData.titles" class="key-bold">
+			<span class="key">Titles:</span>
+			<span class="bold">
+				<span *ngFor="let title of houseData.titles; let last=last">
+					{{last? title : title + ', '}}
+				</span>
+			</span>
+		</p>
+		<p *ngIf="houseData.seats" class="key-bold">
+			<span class="key">Seats:</span>
+			<span class="bold">
+				<span *ngFor="let seat of houseData.seats; let last=last">
+					{{last? seat : seat + ', '}}
+				</span>
+			</span>
+		</p>
+		<p *ngIf="currentLord" class="key-bold" [routerLink]="['/character']"
+			[queryParams]="{'id':getId(currentLord.url)}">
+			<span class="key">Current Lord:</span>
+			<span class="bold click">
+				{{currentLord.name}}
+			</span>
+		</p>
+		<p *ngIf="heir" class="key-bold" [routerLink]="['/character']"
+			[queryParams]="{'id':getId(heir.url)}">
+			<span class="key">Heir:</span>
+			<span class="bold click">
+				{{heir.name}}
+			</span>
+		</p>
+		<p *ngIf="overlord" class="key-bold" [routerLink]="['/house']"
+			[queryParams]="{'id':getId(overlord.url)}">
+			<span class="key">Overlord:</span>
+			<span class="bold click">
+				{{overlord.name}}
+			</span>
+		</p>
+		<p *ngIf="founder" class="key-bold" [routerLink]="['/character']"
+			[queryParams]="{'id':getId(founder.url)}">
+			<span class="key">Founder:</span>
+			<span class="bold click">
+				{{founder.name}}
+			</span>
+		</p>
+		<p *ngIf="houseData.diedOut" class="key-bold">
+			<span class="key">Died Out:</span>
+			<span class="bold">
+				{{houseData.diedOut}}
+			</span>
+		</p>
+		<p *ngIf="houseData.ancestralWeapons" class="key-bold">
+			<span class="key">Ancestral Weapons:</span>
+			<span class="bold">
+				<span *ngFor="let wp of houseData.ancestralWeapons; let last=last">
+					{{last? wp : wp + ', '}}
+				</span>
+			</span>
+		</p>
+	</div>
+	<div class="branches-members" *ngIf="cadetBranches || swornMembers">
+		<div class="label-cards">
+			<div class="label">
+				<h2>Cadet Branches</h2>
+			</div>
+			<app-card-list [cards]="cadetBranches"></app-card-list>
+		</div>
+		<div class="label-cards">
+			<div class="label">
+				<h2>Sworn Members</h2>
+			</div>
+			<app-card-list [cards]="swornMembers"></app-card-list>
+		</div>
+	</div>
+</div>

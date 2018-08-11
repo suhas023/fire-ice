@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiServiceService } from '../api-service.service'
 
@@ -53,7 +53,6 @@ export class HouseComponent implements OnInit, DoCheck {
     console.log(this.cadetBranches);
     console.log(this.swornMembers);
     console.log("-------------------------------");
-
   }
 
   getRelatedInfo(){
@@ -85,14 +84,28 @@ export class HouseComponent implements OnInit, DoCheck {
   getSwornMembers() {
     if(this.displayedMembers < this.swornMembersLinks.length)
       this.apiService.getCardsFromLinks(this.swornMembersLinks
-          .slice(this.displayedMembers, this.displayedMembers + 5))
+          .slice(this.displayedMembers, this.displayedMembers + 0))
         .subscribe(data => {
           data.forEach(res => this.swornMembers.push(res));
-          this.displayedMembers += 5;
+          this.displayedMembers += 0;
         }
       );
   }
 
+  @HostListener("window:scroll", [])
+  onScroll(): void {
+    if (this.bottomReached()) {
+      this.getSwornMembers();
+    }
+  }
+
+  bottomReached(): boolean {
+    return (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
+  }
+
+  getId(url: string) {
+    return url.substr(url.lastIndexOf('/') + 1);
+  }
 }
 
 

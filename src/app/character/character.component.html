@@ -30,24 +30,24 @@
 				{{characterData.died}}
 			</span>
 		</p>
-		<p *ngIf="characterData.father" class="key-bold click" [routerLink]="['/character']"
+		<p *ngIf="characterData.father" class="key-bold" [routerLink]="['/character']"
 			[queryParams]="{'id':getId(characterData.father.url)}">
 			<span class="key">Father:</span>
-			<span class="bold">
+			<span class="bold click">
 				{{characterData.father}}
 			</span>
 		</p>
-		<p *ngIf="characterData.mother" class="key-bold click" [routerLink]="['/character']"
+		<p *ngIf="characterData.mother" class="key-bold" [routerLink]="['/character']"
 			[queryParams]="{'id':getId(characterData.mother.url)}">
 			<span class="key">Mother:</span>
-			<span class="bold">
+			<span class="bold click">
 				{{characterData.mother}}
 			</span>
 		</p>
-		<p *ngIf="characterData.spouse" class="key-bold click" [routerLink]="['/character']"
+		<p *ngIf="characterData.spouse" class="key-bold" [routerLink]="['/character']"
 			[queryParams]="{'id':getId(characterData.spouse.url)}">
 			<span class="key">Spouse:</span>
-			<span class="bold">
+			<span class="bold click">
 				{{characterData.spouse}}
 			</span>
 		</p>
