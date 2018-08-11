@@ -1,4 +1,4 @@
-<div *ngIf="cardType==='book'" class="card book" [routerLink]="['/book']"
+<a *ngIf="cardType==='book'" class="card book" [routerLink]="['/book']"
 	[queryParams]="{'id':getId(card.url)}">
 	<div><small>(book)</small></div>
 	<div class="name">{{card.name}}</div>
@@ -11,9 +11,9 @@
 			{{card.released | date}}
 		</small>
 	</div>
-</div>
+</a>
 
-<div *ngIf="cardType==='character'" class="card character" [routerLink]="['/character']"
+<a *ngIf="cardType==='character'" class="card character" [routerLink]="['/character']"
 	[queryParams]="{'id':getId(card.url)}">
 	<div><small>(character)</small></div>
 	<div class="name">{{card.name?card.name:'Common Character'}}</div>
@@ -28,9 +28,9 @@
 			{{card.gender}}
 		</small>
 	</div>
-</div>
+</a>
 
-<div *ngIf="cardType==='house'" class="card house" [routerLink]="['/house']"
+<a *ngIf="cardType==='house'" class="card house" [routerLink]="['/house']"
 	[queryParams]="{'id':getId(card.url)}">
 	<div><small>(house)</small></div>
 	<div class="name">{{card.name?card.name:'Common House'}}</div>
@@ -42,4 +42,4 @@
 	<div>
 		<small *ngIf="card.words">{{card.words}}</small>
 	</div>
-</div>
+</a>

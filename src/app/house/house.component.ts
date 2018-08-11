@@ -31,16 +31,23 @@ export class HouseComponent implements OnInit, DoCheck {
 
   ngOnInit() {
     this.route.queryParamMap
-      .subscribe(data => this.id = data.get('id'));
+      .subscribe(data => { 
+        this.id = data.get('id');
+        this.apiService.getHouseCard(this.id)
+          .subscribe(data =>{
+            this.houseData = data;
+            this.getRelatedInfo();
+        })
+      });
 
     // this.apiService.getHouseCard(this.id)
     //   .subscribe(data => this.houseData = data);
 
-    this.houseData = jsonData;
-    this.cadetBranchesLinks = jsonData.cadetBranches;
-    this.swornMembersLinks = jsonData.swornMembers;
+    // this.houseData = jsonData;
+    // this.cadetBranchesLinks = jsonData.cadetBranches;
+    // this.swornMembersLinks = jsonData.swornMembers;
 
-    this.getRelatedInfo();
+    // this.getRelatedInfo();
 
   }
 
