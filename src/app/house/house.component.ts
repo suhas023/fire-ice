@@ -26,10 +26,12 @@ export class HouseComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
+    console.log("--new--");
     this.route.queryParamMap
       .subscribe(data => {
-        this.reset(); 
+        this.reset();
         this.id = data.get('id');
+        console.log(this.id);
         this.apiService.getHouseCard(this.id)
           .subscribe(data =>{
             this.houseData = data;
@@ -41,6 +43,7 @@ export class HouseComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
+    console.log(this.displayedMembers);
     // console.log("-------------------------------");
     // console.log(this.currentLord);
     // console.log(this.heir);
@@ -48,6 +51,7 @@ export class HouseComponent implements OnInit, DoCheck {
     // console.log(this.founder);
     // console.log(this.cadetBranches);
     // console.log(this.swornMembers);
+    // console.log(this.swornMembersLinks);
     // console.log("-------------------------------");
   }
 
@@ -80,19 +84,21 @@ export class HouseComponent implements OnInit, DoCheck {
   }
 
   getSwornMembers() {
-    if(this.displayedMembers < this.swornMembersLinks.length)
+    if(this.displayedMembers <= this.swornMembersLinks.length) {
+      this.displayedMembers += 4;
       this.apiService.getCardsFromLinks(this.swornMembersLinks
-          .slice(this.displayedMembers, this.displayedMembers + 8))
+          .slice(this.displayedMembers - 4, this.displayedMembers))
         .subscribe(data => {
           data.forEach(res => this.swornMembers.push(res));
-          this.displayedMembers += 8;
         }
       );
+    }
   }
 
   @HostListener("window:scroll", [])
   onScroll(): void {
-    if (this.bottomReached()) {
+    console.log("scroll");
+    if (this.bottomReached() ) {
       this.getSwornMembers();
     }
   }
@@ -104,7 +110,7 @@ export class HouseComponent implements OnInit, DoCheck {
     // console.log(document.body.offsetHeight);
     // console.log("---------------------------")
 
-    return (window.innerHeight + window.scrollY + 40) >= document.body.offsetHeight;
+    return (window.scrollY)&&((window.innerHeight + window.scrollY + 40) >= document.body.offsetHeight);
   }
 
   getId(url: string) {

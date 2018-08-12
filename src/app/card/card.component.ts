@@ -15,7 +15,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.findCardType();
-    console.log(this.cardType);
+    // console.log(this.cardType);
   }
 
 

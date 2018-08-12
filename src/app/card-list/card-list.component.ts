@@ -17,7 +17,7 @@ export class CardListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log(this.cards);
+    // console.log(this.cards);
   }
 
 }
