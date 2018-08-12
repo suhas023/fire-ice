@@ -1,4 +1,5 @@
-import { Component, OnInit, HostListener, HostBinding, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-nav',
@@ -8,22 +9,23 @@ import { Component, OnInit, HostListener, HostBinding, Output, EventEmitter } fr
 export class NavComponent implements OnInit {
 
   showDropDown: boolean;
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
   }
 
-  @Output() event: EventEmitter<string[]> = new EventEmitter();
+  searchCard(name: HTMLInputElement, event: Event) {
+    console.log(name.value);
+    if(name.value) {
+      this.router.navigate(["/category"], {queryParams:{'search': name.value.trim()}});
+    }
+    event.preventDefault();
+  }
 
   @HostListener('click', ["$event"])
   dropDown(e) {
-  	if (e.target.nodeName === "I" || e.target.nodeName === "LI" )
+  	if (e.target.nodeName === "I" || e.target.nodeName === "A" )
   	this.showDropDown = !this.showDropDown;
-
-    if(e.target.nodeName === "LI") {
-      this.event.emit([e.target.nodeName, e.target.textContent.trim()])
-    }
-
   }
 }

@@ -7,8 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  changeList(e) {
-    console.log(e[1]);
-  }
 
 }

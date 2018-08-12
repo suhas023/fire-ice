@@ -17,8 +17,8 @@
 		</li>
 		<li>
 			<form>
-				<input type="text" name="search">
-				<button type="submit">Search</button>
+				<input type="text" name="search" #name autocomplete="off">
+				<button type="submit" (click)="searchCard(name, $event)">Search</button>
 			</form>
 		</li>
 	</ul>

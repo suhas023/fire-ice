@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
 
@@ -26,25 +26,34 @@ export class CategoryComponent implements OnInit {
       if(this.show)
         this.getCategoryCards();
       else if (this.search)
-        this.getSearchCard();
+        this.getSearchedCard();
     });
   }
 
   getCategoryCards() {
     if(!this.stopLoading) {
+      this.page += 1;
       this.apiService.getPages(this.show, this.page)
         .subscribe((data:any[]) => {
           if(data.length) {
             data.forEach(res => this.categoryCards.push(res));
             if(!this.activateScroll)
               this.activateScroll = true;
-            this.page += 1;
           } else {
             this.activateScroll = false;
             this.stopLoading = true;
           }
         });
     }
+  }
+
+  getSearchedCard() {
+    this.apiService.getSearchedCard(this.search)
+      .subscribe((data:any[]) => {
+        for(let i = 0; i < data.length; i++)
+          if(data[i].length)
+            this.categoryCards = data[i];
+      });
   }
 
   reset() {
@@ -54,5 +63,23 @@ export class CategoryComponent implements OnInit {
     this.page = 0;
     this.categoryCards = [];
     this.stopLoading = false;
+  }
+
+    @HostListener("window:scroll", [])
+  onScroll(): void {
+    console.log("scroll");
+    if (this.activateScroll && this.bottomReached()) {
+      this.getCategoryCards();
+    }
+  }
+
+  bottomReached(): boolean {
+    // console.log("---------------------------")
+    // console.log(window.scrollY + window.innerHeight + 20);
+    // console.log(window.scrollY + window.innerHeight +20>= document.body.offsetHeight);
+    // console.log(document.body.offsetHeight);
+    // console.log("---------------------------")
+
+    return (window.scrollY)&&((window.innerHeight + window.scrollY + 40) >= document.body.offsetHeight);
   }
 }

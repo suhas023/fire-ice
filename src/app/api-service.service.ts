@@ -47,4 +47,12 @@ export class ApiServiceService {
     return this.http.get(`${this.apiUrl}${category}?pageSize=24&page=${page}`);
   }
 
+  getSearchedCard(name: string) {
+    return forkJoin(
+      this.http.get(this.apiUrl + "books?name=" + name),
+      this.http.get(this.apiUrl + "characters?name=" + name),
+      this.http.get(this.apiUrl + "houses?name=" + name)
+    );
+  }
+
 }
