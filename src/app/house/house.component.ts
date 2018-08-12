@@ -20,6 +20,7 @@ export class HouseComponent implements OnInit, DoCheck {
   cadetBranches: any[];
   swornMembers: any[];
   displayedMembers: number;
+  activateScroll: boolean;
 
   constructor(private route: ActivatedRoute, private apiService: ApiServiceService) {
     this.reset();
@@ -43,7 +44,7 @@ export class HouseComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    console.log(this.displayedMembers);
+    // console.log(this.displayedMembers);
     // console.log("-------------------------------");
     // console.log(this.currentLord);
     // console.log(this.heir);
@@ -90,15 +91,20 @@ export class HouseComponent implements OnInit, DoCheck {
           .slice(this.displayedMembers - 4, this.displayedMembers))
         .subscribe(data => {
           data.forEach(res => this.swornMembers.push(res));
+          if((window.innerHeight + 120 >= document.body.offsetHeight))
+            this.getSwornMembers();
+          else
+            this.activateScroll = true;
         }
       );
     }
+    else
+      this.activateScroll = false;
   }
 
   @HostListener("window:scroll", [])
   onScroll(): void {
-    console.log("scroll");
-    if (this.bottomReached() ) {
+    if (this.activateScroll && this.bottomReached()) {
       this.getSwornMembers();
     }
   }
@@ -129,5 +135,6 @@ export class HouseComponent implements OnInit, DoCheck {
     this.cadetBranches = [];
     this.swornMembers = [];
     this.displayedMembers = 0;
+    this.activateScroll = false;
   }
 }

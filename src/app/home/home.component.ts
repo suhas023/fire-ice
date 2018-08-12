@@ -26,9 +26,16 @@ export class HomeComponent implements OnInit {
 
         this.allCards = [...this.bookCards, ...this.characterCards, ...this.houseCards];
         console.log(this.allCards);
-        this.selectedCards = this.allCards;
+        this.selectedCards = this.allCards.sort(this.sortFunction);
       }
     )
+  }
+
+  sortFunction(a, b) {
+    let x = a.name?a.name.toLowerCase():'common character';
+    let y = b.name?b.name.toLowerCase():'common character';
+
+    return x < y? -1: 1;
   }
 
 }

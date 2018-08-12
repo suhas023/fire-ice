@@ -44,7 +44,7 @@ export class ApiServiceService {
   }
 
   getPages(category: string, page: number) {
-    return this.http.get(`${this.apiUrl}${category}?pageSize=24&page=${page}`);
+    return this.http.get(`${this.apiUrl}${category}?pageSize=20&page=${page}`);
   }
 
   getSearchedCard(name: string) {

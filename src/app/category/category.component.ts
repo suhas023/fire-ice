@@ -37,8 +37,12 @@ export class CategoryComponent implements OnInit {
         .subscribe((data:any[]) => {
           if(data.length) {
             data.forEach(res => this.categoryCards.push(res));
-            if(!this.activateScroll)
-              this.activateScroll = true;
+            if(!this.activateScroll) {
+              if((window.innerHeight + 120 >= document.body.offsetHeight))
+                this.getCategoryCards();
+              else
+                this.activateScroll = true;
+            }
           } else {
             this.activateScroll = false;
             this.stopLoading = true;
@@ -79,6 +83,7 @@ export class CategoryComponent implements OnInit {
     // console.log(window.scrollY + window.innerHeight +20>= document.body.offsetHeight);
     // console.log(document.body.offsetHeight);
     // console.log("---------------------------")
+
 
     return (window.scrollY)&&((window.innerHeight + window.scrollY + 40) >= document.body.offsetHeight);
   }
