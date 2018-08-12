@@ -1,1 +1,5 @@
 <app-card-list [cards]="categoryCards"></app-card-list>
+<div *ngIf="notFound" class="not-found">
+	<div class="face">(^-^*)</div>
+	<div class="message">No Cards Found!</div>
+</div>

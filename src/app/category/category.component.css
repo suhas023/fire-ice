@@ -1,0 +1,20 @@
+.not-found {
+	width: 100%;
+	margin: 20px 0px;
+	text-align: center;
+}
+
+.face {
+	font-size: 140px;
+	margin: 40px 0px;
+}
+
+.message {
+	font-size: 20px;
+}
+
+@media screen and (max-width: 480px) {
+	.face {
+		font-size: 70px;
+	}
+}

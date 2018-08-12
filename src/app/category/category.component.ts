@@ -15,6 +15,7 @@ export class CategoryComponent implements OnInit {
   page: number;
   categoryCards: any[];
   stopLoading: boolean;
+  notFound: boolean;
   constructor(private route: ActivatedRoute, private apiService: ApiServiceService) {
   }
 
@@ -55,8 +56,12 @@ export class CategoryComponent implements OnInit {
     this.apiService.getSearchedCard(this.search)
       .subscribe((data:any[]) => {
         for(let i = 0; i < data.length; i++)
-          if(data[i].length)
+          if(data[i].length) {
             this.categoryCards = data[i];
+            break;
+          }
+        if(!this.categoryCards.length)
+          this.notFound = true;
       });
   }
 
@@ -67,6 +72,7 @@ export class CategoryComponent implements OnInit {
     this.page = 0;
     this.categoryCards = [];
     this.stopLoading = false;
+    this.notFound = false;
   }
 
     @HostListener("window:scroll", [])
