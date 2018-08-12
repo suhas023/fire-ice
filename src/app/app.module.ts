@@ -11,6 +11,7 @@ import { BookComponent } from './book/book.component';
 import { HomeComponent } from './home/home.component';
 import { CharacterComponent } from './character/character.component';
 import { HouseComponent } from './house/house.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HouseComponent } from './house/house.component';
     BookComponent,
     HomeComponent,
     CharacterComponent,
-    HouseComponent
+    HouseComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

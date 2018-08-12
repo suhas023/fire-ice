@@ -43,5 +43,8 @@ export class ApiServiceService {
     return forkJoin(...httpObservables);
   }
 
+  getPages(category: string, page: number) {
+    return this.http.get(`${this.apiUrl}${category}?pageSize=24&page=${page}`);
+  }
 
 }

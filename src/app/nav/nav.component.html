@@ -1,19 +1,19 @@
 <nav>
 	<div class="brand-drop">
-		<span class="brand">
+		<a class="brand" [routerLink]="['/']">
 			Fire/Ice
-		</span>
+		</a>
 		<i class="fas fa-bars"></i>
 	</div>
 	<ul [class.showDropDown]="showDropDown" [class.hideDropDown]="!showDropDown">
 		<li class="link">
-			Books
+			<a [routerLink]="['/category']" [queryParams]="{'show':'books'}">Books</a>
 		</li>
 		<li class="link">
-			Characters
+			<a [routerLink]="['/category']" [queryParams]="{'show':'characters'}">Characters</a>
 		</li>
 		<li class="link">
-			Houses
+			<a [routerLink]="['/category']" [queryParams]="{'show':'houses'}">Houses</a>
 		</li>
 		<li>
 			<form>

@@ -26,9 +26,9 @@ export class HouseComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
-    console.log("--new--");
     this.route.queryParamMap
       .subscribe(data => {
+        window.scroll(0, 0);
         this.reset();
         this.id = data.get('id');
         console.log(this.id);
