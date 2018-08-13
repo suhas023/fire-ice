@@ -25,7 +25,6 @@ export class NavComponent implements OnInit {
 
   @HostListener('click', ["$event"])
   dropDown(e) {
-    console.log(e.target.className, e.target);
   	if (e.target.nodeName === "I" || (e.target.className === "bars") || e.target.nodeName === "A" )
   	this.showDropDown = !this.showDropDown;
   }
