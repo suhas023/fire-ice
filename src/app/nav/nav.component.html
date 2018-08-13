@@ -1,11 +1,13 @@
 <nav>
 	<div class="brand-drop">
 		<div class="brand">
-		<a  [routerLink]="['/']">
-			Fire/Ice
-		</a>
+			<a  [routerLink]="['/']">
+				Fire/Ice
+			</a>
 		</div>
-		<i class="fas fa-bars"></i>
+		<div class="bars">
+			<i class="fas fa-bars"></i>
+		</div>
 	</div>
 	<ul [class.showDropDown]="showDropDown" [class.hideDropDown]="!showDropDown">
 		<li class="link">
