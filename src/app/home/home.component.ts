@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
         this.houseCards = data[2];
 
         this.allCards = [...this.bookCards, ...this.characterCards, ...this.houseCards];
-        console.log(this.allCards);
         this.selectedCards = this.allCards.sort(this.sortFunction);
       }
     )
