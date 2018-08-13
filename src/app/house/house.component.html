@@ -54,13 +54,13 @@
 				{{heir.name}}
 			</a>
 		</p>
-		<a *ngIf="overlord" class="key-bold">
+		<p *ngIf="overlord" class="key-bold">
 			<span class="key">Overlord:</span>
 			<a class="bold click" [routerLink]="['/house']"
 			[queryParams]="{'id':getId(overlord.url)}">
 				{{overlord.name}}
 			</a>
-		</a>
+		</p>
 		<p *ngIf="founder" class="key-bold">
 			<span class="key">Founder:</span>
 			<a class="bold click" [routerLink]="['/character']"

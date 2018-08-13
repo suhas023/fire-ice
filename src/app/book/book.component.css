@@ -29,10 +29,12 @@
 }
 
 .header h2, .label h2 {
+	padding: 5px;
 	outline: 5px solid #A0A0A0;
 }
 
 .info {
+	font-size: 18px;
 	outline: 5px solid #A0A0A0;
 	cursor: default;
 }

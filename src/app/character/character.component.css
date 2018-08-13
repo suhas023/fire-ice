@@ -19,6 +19,7 @@
 
 .header h2 {
 	margin: 0px;
+	padding: 5px;
 	font-size: 28px;
 	text-align: center;
 	font-weight: bold;
@@ -57,7 +58,7 @@
 .bold {
 	margin: 0px 0px 0px 5px;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 20px;
 	flex: 1;
 }
 
@@ -66,6 +67,7 @@
 	text-align: center;
 	font-size: 23px;
 }
+
 
 .pov-books {
 	margin-top: 50px;
@@ -115,6 +117,7 @@
 
 .click {
 	cursor: pointer;
+	text-decoration: underline;
 }
 
 .click:hover {
@@ -122,6 +125,26 @@
 }
 
 @media screen and (max-width: 480px) {
+	.info {
+		width: 360px;
+	}
+	.key-bold {
+		flex-direction: column;
+		align-items: center;
+	}
+	.bold {
+		text-align: center;
+		margin: 10px 0px;
+	}
+}
+
+@media screen and (max-width: 380px) {
+	.info {
+		width: 300px;
+	}
+}
+
+@media screen and (max-width: 300px) {
 	.info {
 		width: 100%;
 	}
