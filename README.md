@@ -28,9 +28,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Screenshots
 ![sample shot](/screenshots/ang1.png?raw=true)
-<br/>
+
+
+
 ![sample shot](/screenshots/ang2.png?raw=true)
-<br/>
+
+
+
 ![sample shot](/screenshots/ang3.png?raw=true)
 
 
